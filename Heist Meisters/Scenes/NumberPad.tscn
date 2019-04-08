@@ -1,0 +1,188 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://new_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/NumberPad.gd" type="Script" id=2]
+[ext_resource path="res://GFX/Interface/PNG/metalPanel.png" type="Texture" id=3]
+[ext_resource path="res://GFX/Interface/PNG/glassPanel.png" type="Texture" id=4]
+[ext_resource path="res://GFX/Interface/PNG/dotRed.png" type="Texture" id=5]
+[ext_resource path="res://GFX/Interface/PNG/metalPanel_greenCorner.png" type="Texture" id=6]
+[ext_resource path="res://GFX/Interface/PNG/metalPanel_redCorner.png" type="Texture" id=7]
+[ext_resource path="res://GFX/Interface/PNG/metalPanel_blueCorner.png" type="Texture" id=8]
+[ext_resource path="res://SFX/twoTone1.ogg" type="AudioStream" id=9]
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 100, 100 )
+
+[node name="NumberPad" type="Popup"]
+rect_min_size = Vector2( 300, 400 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Background" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+
+[node name="DisplayContainer" type="CenterContainer" parent="VSplitContainer"]
+margin_right = 280.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="DisplayGlass" type="NinePatchRect" parent="VSplitContainer/DisplayContainer"]
+margin_left = 15.0
+margin_right = 265.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 250, 100 )
+texture = ExtResource( 4 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Display" type="RichTextLabel" parent="VSplitContainer/DisplayContainer"]
+margin_left = 40.0
+margin_top = 25.0
+margin_right = 240.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 200, 50 )
+bbcode_enabled = true
+bbcode_text = "TEST"
+text = "TEST"
+
+[node name="ButtonContainer" type="CenterContainer" parent="VSplitContainer"]
+margin_top = 112.0
+margin_right = 280.0
+margin_bottom = 380.0
+
+[node name="ButtonGrid" type="GridContainer" parent="VSplitContainer/ButtonContainer"]
+margin_left = 140.0
+margin_top = 134.0
+margin_right = 140.0
+margin_bottom = 134.0
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 3
+
+[node name="Button1" type="Button" parent="VSplitContainer/ButtonContainer/ButtonGrid"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+text = "1"
+
+[node name="Button2" type="Button" parent="VSplitContainer/ButtonContainer/ButtonGrid"]
+margin_left = 48.0
+margin_right = 88.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+text = "2"
+
+[node name="Button3" type="Button" parent="VSplitContainer/ButtonContainer/ButtonGrid"]
+margin_left = 96.0
+margin_right = 136.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+text = "3"
+
+[node name="Button4" type="Button" parent="VSplitContainer/ButtonContainer/ButtonGrid"]
+margin_top = 48.0
+margin_right = 40.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 40, 40 )
+text = "4"
+
+[node name="Button5" type="Button" parent="VSplitContainer/ButtonContainer/ButtonGrid"]
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 88.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 40, 40 )
+text = "5"
+
+[node name="Button6" type="Button" parent="VSplitContainer/ButtonContainer/ButtonGrid"]
+margin_left = 96.0
+margin_top = 48.0
+margin_right = 136.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 40, 40 )
+text = "6"
+
+[node name="Button7" type="Button" parent="VSplitContainer/ButtonContainer/ButtonGrid"]
+margin_top = 96.0
+margin_right = 40.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 40, 40 )
+text = "7"
+
+[node name="Button8" type="Button" parent="VSplitContainer/ButtonContainer/ButtonGrid"]
+margin_left = 48.0
+margin_top = 96.0
+margin_right = 88.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 40, 40 )
+text = "8"
+
+[node name="Button9" type="Button" parent="VSplitContainer/ButtonContainer/ButtonGrid"]
+margin_left = 96.0
+margin_top = 96.0
+margin_right = 136.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 40, 40 )
+text = "9"
+
+[node name="Light" type="TextureRect" parent="VSplitContainer/ButtonContainer/ButtonGrid"]
+margin_top = 144.0
+margin_right = 40.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Button0" type="Button" parent="VSplitContainer/ButtonContainer/ButtonGrid"]
+margin_left = 48.0
+margin_top = 144.0
+margin_right = 88.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 40, 40 )
+text = "0"
+
+[node name="ButtonOK" type="Button" parent="VSplitContainer/ButtonContainer/ButtonGrid"]
+margin_left = 96.0
+margin_top = 144.0
+margin_right = 136.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+text = "OK"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[connection signal="pressed" from="VSplitContainer/ButtonContainer/ButtonGrid/Button1" to="." method="_on_Button1_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
